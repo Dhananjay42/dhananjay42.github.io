@@ -23,7 +23,7 @@ repository               : "Dhananjay42/dhananjay42.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "profile_picture.jpg"
   name             : "dhananjay b"
   pronouns         : "he/him/his"  
   bio              : "hey! dhananjay here..."
