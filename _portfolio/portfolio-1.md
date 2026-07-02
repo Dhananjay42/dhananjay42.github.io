@@ -1,8 +1,6 @@
 ---
 title: "Portfolio item number 1"
 excerpt: "Short description of portfolio item number 1. Click to learn more about this project and see the full details."
-header:
-  teaser: /images/500x300.png
 collection: portfolio
 ---
 
