@@ -12,4 +12,4 @@ Here you can add more detailed information about the project, including:
 - What problem it solved
 - Technologies used
 - Outcomes and results
-- Links to live demos or repositories 
+- Links to live demos or repositories
