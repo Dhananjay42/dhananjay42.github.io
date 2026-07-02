@@ -14,7 +14,11 @@ Course project done as part of STATS209: Causal Inference, Winter 2025-26 quarte
 
 While there are many reasons to believe that there are large structural disparities in India along the lines of caste, quantitatively demonstrating this proves to be quite challenging due to haphazard data-collection processes. Coming to caste specifically, the last caste census was conducted in 2011 (15 years ago at the time of writing this), and hence, there are almosts no recent enumerations of caste in India. While this does reflect a larger symptom of how post-colonial governments operate, as statisticians deeply interested in the subcontinent and in the all-pervasive problem of caste, we wanted to identify approaches of quantifying inequality even in such challenging settings. 
 
-Upon doing some research, we came across the National Family Health Survey (NFHS) data, which measures various healthcare indicator levels at a district-level granularity, along with caste information of respondents. Of particular interest to us is data from NFHS-5 (2019-21) and NFHS-4 (2014-15), both of which are fairly recent. 
+Upon doing some research, we came across the National Family Health Survey (NFHS) data, which measures various healthcare indicators for a sample of the population, which also contains caste information of the respondents. Of particular interest to us is data from NFHS-5 (2019-21) and NFHS-4 (2014-15), both of which are fairly recent. 
+
+![Disparity Visualization](/images/nfhs_vis.png)
+*Figure 1: Distribution of child nutrition outcomes across caste groups*
+
 
 Since we needed our problem to be modelled using a causal inference framework, we exploited another characteristic of the NFHS-5 data. It was conducted in 2 phases, pre-COVID, and post-COVID. Hence, if we were to think of the disparity between certain health metrics between Forward Castes (FC) and Backward Castes (BC) as the "outcome" and COVID as a "treatment", we have a natural way of modelling the causal effect of COVID on worsening existing disparities. For this particular project, we used the disparity in child malnutrition outcomes as the outcome, and performed our analysis at a district-level granularity. 
 
