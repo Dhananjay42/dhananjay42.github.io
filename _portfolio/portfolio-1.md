@@ -2,7 +2,7 @@
 title: "Analyzing Caste-Based Child Nutrition Disparities Using NFHS-5 Data"
 excerpt: "We applied causal inference methods such as difference-in-differences and triple-difference models to evaluate the impact of COVID-19 on child nutrition outcomes across caste groups using India’s NFHS-5 survey data. Click to learn more."
 header:
-    teaser: /images/nfhs_vis.png
+    teaser: nfhs_vis.png
 collection: portfolio
 ---
 
