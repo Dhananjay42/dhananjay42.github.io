@@ -2,7 +2,7 @@
 title: "Measuring Healthcare Accessibility in South Africa"
 excerpt: "Working with the World Bank Health Group, we developed a geospatial framework integrating clinic locations, road networks, and internet connectivity data to assess healthcare accessibility across South Africa."
 header:
-    teaser: worldbank_out
+    teaser: worldbank_out.png
 collection: portfolio
 ---
 
