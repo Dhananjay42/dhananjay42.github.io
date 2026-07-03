@@ -26,6 +26,7 @@ The first challenge we faced was the extreme sparsity in internet connectivity d
 To model this problem, we take two graph-based approaches. The high-level idea is that if we can model the time taken to access a healthcare facility as a "physical cost" and define a "digital cost" based on the internet connectivity at the location, then we can imagine a graph that contains these costs. Once we have that, we can simply use Djikstra's algorithm to identify the optimal cost from each location, which can later be clustered to identify vulnerable regions. A detailed explanation of the methodology and the results can be found in the report linked below.
 
 ![Outputs](/images/worldbank_out.png)
+
 *Figure 2: The polygons in green, yellow, and red correspond to regions of the country that have "Sufficient", "Limited", and "Insufficient" access to healthcare*
 
 ## Links
