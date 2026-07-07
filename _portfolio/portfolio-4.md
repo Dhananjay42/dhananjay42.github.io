@@ -2,7 +2,7 @@
 title: "Enhancing Automatic Speech Recognition Models for Maternal and Reproductive Health: Fine-Tuning and Real-World Evaluation in Wolof"
 excerpt: " We have come up with a methodology through which Automatic Speech Recognition (ASR) models can be fine-tuned for specific domains for low-resource languages such as Wolof and Hausa. Specifically, we have fine-tuned these models for the maternal and reproductive healthcare domains."
 header:
-    teaser: nakala.png
+    teaser: nakala_out.png
 collection: portfolio
 ---
 
