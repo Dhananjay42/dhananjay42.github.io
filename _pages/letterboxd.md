@@ -5,6 +5,16 @@ permalink: /letterboxd/
 author_profile: true
 ---
 
+## My Recent Watches
+
+I track all my film watches on Letterboxd. Here's a snapshot of what I've been watching recently:
+
+<div style="margin: 2rem 0; text-align: center;">
+  <p>
+    <a href="https://letterboxd.com/clroymustang/" target="_blank" rel="noopener noreferrer" style="display: inline-block; padding: 1rem 2rem; background: #3d5afe; color: white; text-decoration: none; border-radius: 4px; font-weight: 500;">Visit My Letterboxd Profile →</a>
+  </p>
+</div>
+
 <div id="letterboxd-widget" style="margin: 2rem 0;">
   <div id="letterboxd-loading" style="text-align: center; padding: 2rem;">
     <p>Loading recent watches...</p>
@@ -15,7 +25,7 @@ author_profile: true
 <style>
   .letterboxd-films {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     gap: 1.5rem;
     margin-top: 1rem;
   }
@@ -38,7 +48,7 @@ author_profile: true
 
   .letterboxd-film-title {
     margin-top: 0.5rem;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 500;
     max-height: 2.4em;
     overflow: hidden;
@@ -56,21 +66,6 @@ author_profile: true
   .letterboxd-film-title a:hover {
     text-decoration: underline;
   }
-
-  .letterboxd-profile-link {
-    display: inline-block;
-    margin-top: 2rem;
-    padding: 0.75rem 1.5rem;
-    background: #2e3440;
-    color: #eceff4;
-    text-decoration: none;
-    border-radius: 4px;
-    font-weight: 500;
-  }
-
-  .letterboxd-profile-link:hover {
-    background: #3b4252;
-  }
 </style>
 
 <script>
@@ -80,42 +75,43 @@ async function fetchLetterboxdWatches() {
   const content = document.getElementById('letterboxd-content');
 
   try {
-    // Fetch from Letterboxd RSS feed
-    const rssUrl = `https://letterboxd.com/${username}/rss/`;
+    // Fetch directly from Letterboxd profile page
+    const profileUrl = `https://letterboxd.com/${username}/`;
+    const response = await fetch(profileUrl);
+    const html = await response.text();
     
-    // Using a CORS proxy since Letterboxd RSS might have CORS issues
-    const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(rssUrl)}`);
-    const data = await response.json();
+    // Extract recent films from the HTML
+    // Looking for film poster data in the page
+    const filmMatches = html.match(/<li class="poster-container[^>]*>[\s\S]*?<\/li>/g) || [];
     
-    // Parse the XML response
-    const parser = new DOMParser();
-    const xmlDoc = parser.parseFromString(data.contents, 'text/xml');
-    const items = xmlDoc.querySelectorAll('item');
+    if (filmMatches.length === 0) {
+      throw new Error('No films found');
+    }
+
+    let html_output = '<h3>Recent Watches</h3>';
+    html_output += '<div class="letterboxd-films">';
     
-    let html = '<h2>Recent Watches</h2>';
-    html += '<div class="letterboxd-films">';
-    
-    // Get first 20 recent watches
     let count = 0;
-    items.forEach(item => {
-      if (count >= 20) return;
+    filmMatches.forEach(match => {
+      if (count >= 15) return;
       
-      const title = item.querySelector('title')?.textContent || 'Unknown';
-      const link = item.querySelector('link')?.textContent || '#';
-      const description = item.querySelector('description')?.textContent || '';
+      // Extract image URL
+      const imgMatch = match.match(/src="([^"]+\.jpg)"/);
+      const hrefMatch = match.match(/href="([^"]+)"/);
       
-      // Extract image from description if available
-      const imgMatch = description.match(/<img[^>]+src="([^">]+)"/);
-      const imageUrl = imgMatch ? imgMatch[1] : 'https://a.ltrbxd.com/resized/film-0-0-0-0-0ZKUnhikfmbjEZbIh0w2Tg-300-450-0-300-crop.jpg';
-      
-      if (title !== 'watched' && !title.includes('watchlist')) {
-        html += `
+      if (imgMatch && hrefMatch) {
+        const imgUrl = imgMatch[1];
+        const filmUrl = hrefMatch[1];
+        const filmTitle = match.match(/title="([^"]+)"/);
+        const title = filmTitle ? filmTitle[1] : 'Unknown';
+        
+        html_output += `
           <div class="letterboxd-film">
-            <a href="${link}" target="_blank" rel="noopener noreferrer">
-              <img src="${imageUrl}" alt="${title}" loading="lazy">
+            <a href="https://letterboxd.com${filmUrl}" target="_blank" rel="noopener noreferrer">
+              <img src="${imgUrl}" alt="${title}" loading="lazy" style="max-width: 100%;">
             </a>
             <div class="letterboxd-film-title">
-              <a href="${link}" target="_blank" rel="noopener noreferrer">${title}</a>
+              <a href="https://letterboxd.com${filmUrl}" target="_blank" rel="noopener noreferrer">${title}</a>
             </div>
           </div>
         `;
@@ -123,19 +119,26 @@ async function fetchLetterboxdWatches() {
       }
     });
     
-    html += '</div>';
-    html += `<a href="https://letterboxd.com/${username}/" target="_blank" rel="noopener noreferrer" class="letterboxd-profile-link">Visit Full Profile →</a>`;
+    html_output += '</div>';
     
-    content.innerHTML = html;
-    content.style.display = 'block';
+    if (count > 0) {
+      content.innerHTML = html_output;
+      content.style.display = 'block';
+    } else {
+      throw new Error('No films could be extracted');
+    }
     loading.style.display = 'none';
     
   } catch (error) {
     console.error('Error fetching Letterboxd data:', error);
-    loading.innerHTML = '<p>Unable to load recent watches. <a href="https://letterboxd.com/clroymustang/" target="_blank">Visit Letterboxd profile →</a></p>';
+    loading.innerHTML = '<p style="color: #666;">Unable to load dynamic feed. Check out my <a href="https://letterboxd.com/clroymustang/" target="_blank" rel="noopener noreferrer">full profile</a> for all my watches!</p>';
   }
 }
 
 // Fetch when page loads
-document.addEventListener('DOMContentLoaded', fetchLetterboxdWatches);
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', fetchLetterboxdWatches);
+} else {
+  fetchLetterboxdWatches();
+}
 </script>
