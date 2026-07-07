@@ -10,7 +10,7 @@ Collaborators: World Bank Health Group (Dr. Mersedeh Tariverdi, Dr. Miguel Nunez
 
 Project done as part of CME 291 Xplore, Spring 2024-25 quarter. 
 
-Work was presented at the SimBig 2025 conference, held in Lima, Peru. 
+Work was presented at the [SimBig 2025](https://simbig.org/SIMBig2025/) conference, held in Lima, Peru. 
 
 ## Motivation
 
@@ -31,4 +31,4 @@ To model this problem, we take two graph-based approaches. The high-level idea i
 
 ## Links
 
-- [📄 Full Report](https://drive.google.com/file/d/1PF3HMECetcB5N11DFmpsWi_pmvsx0Rl2/view?usp=sharing)
+- [📄 Conference Proceedings Link](https://link.springer.com/chapter/10.1007/978-3-032-20322-9_8)
