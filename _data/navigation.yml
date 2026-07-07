@@ -16,9 +16,6 @@ main:
 
   - title: "Miscellaneous"
     url: /misc/
-  
-  - title: "Letterboxd"
-    url: /letterboxd/
     
   # - title: "CV"
   #   url: /cv-json/
