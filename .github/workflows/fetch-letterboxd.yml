@@ -20,7 +20,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm install cheerio axios
+          npm install cheerio node-fetch@2
 
       - name: Fetch Letterboxd data
         run: node scripts/fetch-letterboxd.js

@@ -1,4 +1,4 @@
-const axios = require('axios');
+const fetch = require('node-fetch');
 const cheerio = require('cheerio');
 const fs = require('fs');
 const path = require('path');
@@ -11,63 +11,61 @@ async function fetchLetterboxdData() {
     console.log(`Fetching Letterboxd data for ${USERNAME}...`);
 
     // Fetch the profile page
-    const response = await axios.get(PROFILE_URL, {
+    const response = await fetch(PROFILE_URL, {
       headers: {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
       },
       timeout: 10000
     });
 
-    const $ = cheerio.load(response.data);
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+    }
+
+    const html = await response.text();
+    const $ = cheerio.load(html);
     const films = [];
 
-    // Find all film posters on the page
-    $('li[data-film-id]').each((index, element) => {
-      if (films.length >= 20) return; // Limit to 20 recent films
+    // Method 1: Try to find film links in poster containers
+    $('div.poster').each((index, element) => {
+      if (films.length >= 20) return;
 
-      const $film = $(element);
-      
-      // Extract data from the poster
-      const filmLink = $film.find('a[data-film-link]').attr('href');
-      const filmTitle = $film.find('img').attr('alt');
-      const posterImg = $film.find('img').attr('src');
-      
-      if (filmLink && filmTitle) {
+      const $poster = $(element);
+      const link = $poster.find('a').attr('href');
+      const img = $poster.find('img');
+      const title = img.attr('alt') || img.attr('title');
+      const src = img.attr('src');
+
+      if (link && title) {
         films.push({
-          title: filmTitle,
-          url: `https://letterboxd.com${filmLink}`,
-          poster: posterImg || null,
-          watched_date: null // Would need to parse from page if needed
+          title: title.trim(),
+          url: `https://letterboxd.com${link}`,
+          poster: src || null
         });
       }
     });
 
-    // If we couldn't parse posters, try alternative method with a-tags
+    // Method 2: If method 1 didn't work, try film-entry links
     if (films.length === 0) {
-      $('a.film-poster').each((index, element) => {
+      $('a.film-poster-link').each((index, element) => {
         if (films.length >= 20) return;
 
         const href = $(element).attr('href');
-        const title = $(element).attr('title');
-        const style = $(element).attr('style');
-        
-        // Extract poster URL from background-image style
-        let posterUrl = null;
-        if (style && style.includes('background-image')) {
-          const match = style.match(/url\(['"]?([^'")]+)['"]?\)/);
-          posterUrl = match ? match[1] : null;
-        }
+        const img = $(element).find('img');
+        const title = img.attr('alt');
+        const src = img.attr('src');
 
         if (href && title) {
           films.push({
-            title: title,
+            title: title.trim(),
             url: `https://letterboxd.com${href}`,
-            poster: posterUrl,
-            watched_date: null
+            poster: src || null
           });
         }
       });
     }
+
+    console.log(`Found ${films.length} films`);
 
     // Save to JSON file
     const dataDir = path.join(__dirname, '..', '_data');
@@ -86,7 +84,6 @@ async function fetchLetterboxdData() {
 
     fs.writeFileSync(outputFile, JSON.stringify(data, null, 2));
     console.log(`✓ Saved ${films.length} films to ${outputFile}`);
-    console.log(`Film titles: ${films.map(f => f.title).join(', ')}`);
 
   } catch (error) {
     console.error('Error fetching Letterboxd data:', error.message);
