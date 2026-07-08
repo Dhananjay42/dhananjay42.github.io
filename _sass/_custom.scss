@@ -3,29 +3,35 @@ $header-font-family  : $serif;   // headings
 
 /* Portfolio List Layout */
 .portfolio-grid {
-  display: block !important;
-  margin-top: 2rem;
-}
-
-.portfolio-grid > div {
-  margin-bottom: 2rem;
-  display: block !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2rem !important;
+  margin-top: 2rem !important;
 }
 
 /* Portfolio Card Styling - Horizontal Layout */
-.portfolio-grid .archive__item {
+.portfolio-grid .grid__item {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  gap: 2rem !important;
+}
+
+.portfolio-grid .grid__item .archive__item {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  gap: 2rem !important;
+  width: 100% !important;
   border: 1px solid #e1e4e8 !important;
   border-radius: 8px !important;
+  padding: 1.5rem !important;
   overflow: visible !important;
   transition: all 0.3s ease !important;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
-  display: flex !important;
-  flex-direction: row !important;
-  height: auto !important;
-  align-items: flex-start !important;
 }
 
-.portfolio-grid .archive__item:hover {
+.portfolio-grid .grid__item .archive__item:hover {
   transform: translateY(-2px) !important;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15) !important;
   border-color: #0366d6 !important;
@@ -40,7 +46,6 @@ $header-font-family  : $serif;   // headings
   background: #f6f8fa !important;
   flex-shrink: 0 !important;
   border-radius: 4px !important;
-  margin-right: 2rem !important;
 }
 
 .portfolio-grid .archive__item-teaser img {
@@ -48,9 +53,10 @@ $header-font-family  : $serif;   // headings
   height: 100% !important;
   object-fit: cover !important;
   transition: transform 0.3s ease !important;
+  display: block !important;
 }
 
-.portfolio-grid .archive__item:hover .archive__item-teaser img {
+.portfolio-grid .grid__item .archive__item:hover .archive__item-teaser img {
   transform: scale(1.05) !important;
 }
 
@@ -73,6 +79,7 @@ $header-font-family  : $serif;   // headings
 /* Portfolio Card Excerpt */
 .portfolio-grid .archive__item-excerpt {
   padding: 0 !important;
+  margin: 0 !important;
   font-size: 0.95em !important;
   color: #586069 !important;
   flex-grow: 1 !important;
@@ -81,15 +88,18 @@ $header-font-family  : $serif;   // headings
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .portfolio-grid .archive__item {
+  .portfolio-grid .grid__item {
     flex-direction: column !important;
+  }
+
+  .portfolio-grid .grid__item .archive__item {
+    flex-direction: column !important;
+    gap: 1rem !important;
   }
 
   .portfolio-grid .archive__item-teaser {
     width: 100% !important;
     min-width: 100% !important;
     height: 200px !important;
-    margin-right: 0 !important;
-    margin-bottom: 1rem !important;
   }
 }
