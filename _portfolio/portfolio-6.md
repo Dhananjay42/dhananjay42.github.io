@@ -2,7 +2,7 @@
 title: "Mapping Socio-Ecological Change in the Red Corridor using GIS"
 excerpt: "The 'Red Corridor' in India is considered a media blackout zone, with there being very little media reporting from the area. We attempt to use remote sensing techniques to paint a picture of the constant confict that is happening in these regions."
 header:
-    teaser: gis_out.png
+    teaser: gis_out.jpg
 collection: portfolio
 ---
 
@@ -18,7 +18,7 @@ Drawing inspiration from how GIS has been used to quantify and study conflict in
 ## Methodology
 We identify Areas of Interest (AoIs) by leveraging prior literature on mining-related conflict in India, which suggests that regions surrounding mineral extraction sites are likely hotspots of conflict. Using district-level Maoist conflict data from the South Asia Terrorism Portal (SATP), we first identify regions with historical conflict activity. We then overlay open-source geospatial datasets of iron ore, bauxite, and coal mine locations to examine the spatial relationship between mining activity and conflict. Buffer regions around these mines are subsequently defined as AoIs for remote sensing analysis, enabling comparison between conflict-affected and non-conflict mining regions.
 
-![Conflict Map](/images/conflict_map.png)
+![Conflict Map](/images/conflict_map.jpg)
 *Figure 1: Map showing conflict areas, created using data from SATP*
 
 
