@@ -1,6 +1,6 @@
 ---
-title: "Evaluating Structural Discrimination in Indian AI Systems"
-excerpt: "In this project, we put forward a methodology through which we can study caste bias in state-of-the-art multilingual LLMs, examining how models associate caste-indicative names with positive and negative attributes across multiple Indian languages."
+title: "Mapping Socio-Ecological Change in the Red Corridor using GIS"
+excerpt: ""
 header:
     teaser: caste_bias_out.png
 collection: portfolio
