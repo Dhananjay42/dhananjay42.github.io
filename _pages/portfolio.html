@@ -7,7 +7,11 @@ author_profile: true
 
 {% include base_path %}
 
-<div class="portfolio-grid grid__wrapper">
+<div class="portfolio-intro">
+  <p>Browse my featured projects. Click any card to open the full project page, read the details, and view images or links.</p>
+</div>
+
+<div class="portfolio-grid">
   {% for post in site.portfolio %}
     {% include archive-single.html type="grid" %}
   {% endfor %}
