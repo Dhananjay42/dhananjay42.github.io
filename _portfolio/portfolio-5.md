@@ -1,32 +1,39 @@
---
-title: "Enhancing Automatic Speech Recognition Models for Maternal and Reproductive Health: Fine-Tuning and Real-World Evaluation in Wolof"
-excerpt: " We have come up with a methodology through which Automatic Speech Recognition (ASR) models can be fine-tuned for specific domains for low-resource languages such as Wolof and Hausa. Specifically, we have fine-tuned these models for the maternal and reproductive healthcare domains."
+---
+title: "Evaluating Structural Discrimination in Indian AI Systems"
+excerpt: "In this project, we put forward a methodology through which we can study caste bias in state-of-the-art multilingual LLMs, examining how models associate caste-indicative names with positive and negative attributes across multiple Indian languages."
 header:
-    teaser: nakala_out.png
+    teaser: caste_bias_out.png
 collection: portfolio
 ---
 
-This project was done at [YUX Design](https://yux.design/), a Dakar-based research firm, through the Stanford SEED program in the Summer of 2025. 
+Collaborators: Anka Reuel, Max Lamparth.
 
-Collaborators: Ertony Basilwango, Yann Le Beux, Oche David Ankeli, Pierre Herve Berdys
+Course project done as part of CS134: Introduction to AI Governance, Winter 2024-25 quarter. 
 
-Work was presented at the [AfricaNLP](https://sites.google.com/view/africanlp2026/home) Workshop, as part of [EACL 2026](https://2026.eacl.org/), held at Rabat, Morocco. 
 
 ## Motivation
-
-Current transcription models are not too good at low-resource African languages, and do not support local languages and their linguistic variations. This hinders research and interventions in the application of these models in critical domains, such as healthcare, education, and governance. In this project, we aimed to fine-tune an Automatic Speech Recognition (ASR) model for Wolof for the maternal and reproductive health domain, that is robust to spoken variations, and able to capture the critical information accurately. 
+As AI systems become increasingly prevalent in India and are integrated into decision-making across critical domains such as governance, healthcare, and education, it is essential to examine the structural discrimination they may perpetuate. While substantial research has investigated biases in large language models (LLMs) based on race, gender, and other protected characteristics, relatively little work has focused on auditing these models for caste bias. This gap is particularly significant in the Indian context, where caste continues to shape social, economic, and institutional outcomes. Understanding whether LLMs reproduce or amplify caste-based biases is therefore an important step toward ensuring that AI systems are fair and equitable.
 
 ## Methodology
+We use the Word Embedding Association Test (WEAT) to measure bias by comparing the cosine similarity between two groups of entities (G₁, G₂) and two sets of attributes (A₁: positive, A₂: contrastive) to assess association differences. This is defined as:
+$$
+S(G_1, G_2, A_1, A_2) = \frac{1}{|G_1|} \sum_{g_1 \in G_1} S(g_1, A_1, A_2) - \frac{1}{|G_2|} \sum_{g_2 \in G_2} S(g_2, A_1, A_2)
+$$
 
-Most African languages are considered "low-resource", which means that there isn't too much high quality textual data available for them. This makes it challenging to train models such as transformers, which require large amounts of data for decent results. Another challenge arrives through the fact that a lot of African languages are spoken, and when they are transcribed into the latin script, there can be different orthographic variations in how you represent different words. It is important that the ground truth data needs to be consistently spelt, so that the model can learn something logical. 
+where we define $S(w, A_1, A_2)$ as:
 
-We started by defining keywords, using them to construct sentences in Wolof, and using language speakers to record various versions of each piece of text. After putting together this fine-tuning dataset, we used the LoRA (Low Rank Approximation) training scheme, which is a standard approach towards fine-tuning large models on small amounts of data. While directly attempting to fine-tune the model caused it to overfit, by using LoRA we were able to improve the model performance, which we kept track of using metrics such as CER (Character Error Rate), WER (Word Error Rate), and KER (Keyword Error Rate). The results are visualized below.
+$$
+S(w, A_1, A_2) = \frac{1}{|A_1|} \sum_{a_1 \in A_1} \cos(w, a_1) - \frac{1}{|A_2|} \sum_{a_2 \in A_2} \cos(w, a_2)
+$$
 
-![LoRA Training Scheme](/images/nakala_out.png)
+The high-level idea here is that given a set of positive and negative adjectives, and terms associated with being either "upper" caste or "lower" caste, we can evaluate the WEAT score which measures the tendency for the models to associate a set of adjectives more with a certain group. We would like these scores to be close to 0, with large values indicating statistically significant biases in either direction. This is what our results look like:
 
-The model and further documentation of our work can be found in the below links.
+![Caste Bias Scores](/images/caste_bias_out.png)
+*Figure 1: WEAT scores for various LLMs across regional languages*
+
+We observe that there are pretty high-values for the WEAT scores, indicating that the models have the tendency to show strong bias on the caste axis. A more detailed look at the methodology and code can be found below. 
 
 ## Links
 
-- [📄 Full Paper](https://aclanthology.org/2026.africanlp-main.27.pdf)
-- [💻 Model](https://nakala.ai/)
+- [📄 Full Paper](https://drive.google.com/file/d1P32SYwbMby3-XafMfbEg5_n2tcfN78vC/view)
+- [💻 Github Link](https://github.com/Dhananjay42/caste_bias_in_AI)
