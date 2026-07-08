@@ -10,12 +10,19 @@ $header-font-family  : $serif;   // headings
 }
 
 .portfolio-grid .grid__item {
-  margin: 0;
+  margin: 0 !important;
+  float: none !important;
+  width: 100% !important;
+  max-width: none !important;
+  display: block !important;
+  position: relative !important;
 }
 
 .portfolio-grid .archive__item {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  min-height: 100%;
   border: 1px solid #e1e4e8;
   border-radius: 18px;
   overflow: hidden;
@@ -91,6 +98,10 @@ $header-font-family  : $serif;   // headings
 @media (max-width: 768px) {
   .portfolio-grid {
     grid-template-columns: 1fr;
+  }
+
+  .portfolio-grid .archive__item {
+    width: auto !important;
   }
 
   .portfolio-grid .archive__item-teaser {
