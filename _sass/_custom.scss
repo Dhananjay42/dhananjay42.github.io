@@ -15,7 +15,9 @@ $header-font-family  : $serif;   // headings
 
 .portfolio-grid .archive__item {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 280px 1fr;
+  gap: 1.5rem;
+  align-items: start;
   border: 1px solid #e1e4e8;
   border-radius: 16px;
   overflow: hidden;
