@@ -1,15 +1,15 @@
 $global-font-family  : $serif;   // body text
 $header-font-family  : $serif;   // headings
 
-/* Portfolio Grid Layout */
+/* Portfolio List Layout */
 .portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 2rem;
   margin-top: 2rem;
 }
 
-/* Portfolio Card Styling */
+/* Portfolio Card Styling - Horizontal Layout */
 .portfolio-grid .archive__item {
   border: 1px solid #e1e4e8;
   border-radius: 8px;
@@ -17,22 +17,24 @@ $header-font-family  : $serif;   // headings
   transition: all 0.3s ease;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   display: flex;
-  flex-direction: column;
-  height: 100%;
+  flex-direction: row;
+  height: auto;
+  align-items: stretch;
 }
 
 .portfolio-grid .archive__item:hover {
-  transform: translateY(-5px);
+  transform: translateY(-2px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
   border-color: #0366d6;
 }
 
-/* Portfolio Card Image */
+/* Portfolio Card Image - Fixed Size */
 .portfolio-grid .archive__item-teaser {
-  width: 100%;
-  height: 200px;
+  width: 280px;
+  height: 280px;
   overflow: hidden;
   background: #f6f8fa;
+  flex-shrink: 0;
 }
 
 .portfolio-grid .archive__item-teaser img {
@@ -48,9 +50,9 @@ $header-font-family  : $serif;   // headings
 
 /* Portfolio Card Content */
 .portfolio-grid .archive__item-title {
-  padding: 1rem 1rem 0.5rem 1rem;
+  padding: 1.5rem 1.5rem 0.5rem 1.5rem;
   margin: 0;
-  font-size: 1.2em;
+  font-size: 1.3em;
 }
 
 .portfolio-grid .archive__item-title a {
@@ -64,18 +66,29 @@ $header-font-family  : $serif;   // headings
 
 /* Portfolio Card Excerpt */
 .portfolio-grid .archive__item-excerpt {
-  padding: 0 1rem 1rem 1rem;
-  font-size: 0.9em;
+  padding: 0 1.5rem 1.5rem 1.5rem;
+  font-size: 0.95em;
   color: #586069;
   flex-grow: 1;
   display: flex;
   align-items: flex-start;
 }
 
+/* Content wrapper */
+.portfolio-grid .archive__item > article > div:not(.archive__item-teaser) {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .portfolio-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+  .portfolio-grid .archive__item {
+    flex-direction: column;
+  }
+
+  .portfolio-grid .archive__item-teaser {
+    width: 100%;
+    height: 200px;
   }
 }
