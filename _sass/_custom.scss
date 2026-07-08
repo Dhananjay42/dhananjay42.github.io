@@ -1,7 +1,7 @@
 $global-font-family  : $serif;   // body text
 $header-font-family  : $serif;   // headings
 
-/* Portfolio Grid - Vertical Stack with Horizontal Cards */
+/* Portfolio Grid - Vertical List */
 .portfolio-grid {
   margin-top: 2rem;
 }
@@ -10,12 +10,12 @@ $header-font-family  : $serif;   // headings
   margin-bottom: 2rem;
 }
 
-/* Each card: image left, content right */
+/* Each card - 2 column layout: image left, text right */
 .portfolio-grid .archive__item {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 280px 1fr;
   gap: 2rem;
-  align-items: flex-start;
+  align-items: start;
   border: 1px solid #e1e4e8;
   border-radius: 8px;
   overflow: hidden;
@@ -28,13 +28,15 @@ $header-font-family  : $serif;   // headings
   border-color: #0366d6;
 }
 
-/* Image - Fixed size on left */
+/* Image - Left column, fixed size */
 .portfolio-grid .archive__item-teaser {
+  grid-column: 1;
+  grid-row: 1 / -1;
   width: 280px;
   height: 280px;
-  flex-shrink: 0;
   border-radius: 0;
   overflow: hidden;
+  background: #f6f8fa;
 }
 
 .portfolio-grid .archive__item-teaser img {
@@ -44,13 +46,17 @@ $header-font-family  : $serif;   // headings
   display: block;
 }
 
-/* Text content - Right side, grows to fill space */
-.portfolio-grid .archive__item-content {
-  flex: 1;
-  padding: 1.5rem;
+/* Text content - Right column */
+.portfolio-grid .archive__item-title,
+.portfolio-grid .page__meta,
+.portfolio-grid .page__date,
+.portfolio-grid .archive__item-excerpt {
+  grid-column: 2;
+  padding: 0 1.5rem;
 }
 
 .portfolio-grid .archive__item-title {
+  padding-top: 1.5rem;
   margin: 0 0 0.5rem 0;
   font-size: 1.3em;
 }
@@ -65,7 +71,7 @@ $header-font-family  : $serif;   // headings
 }
 
 .portfolio-grid .archive__item-excerpt {
-  padding: 0;
+  padding-bottom: 1.5rem;
   margin: 0;
   font-size: 0.95em;
   color: #586069;
@@ -74,17 +80,31 @@ $header-font-family  : $serif;   // headings
 /* Responsive: stack vertically on mobile */
 @media (max-width: 768px) {
   .portfolio-grid .archive__item {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     gap: 0;
   }
 
   .portfolio-grid .archive__item-teaser {
+    grid-column: 1;
+    grid-row: 1;
     width: 100%;
     height: 200px;
     border-radius: 8px 8px 0 0;
   }
 
-  .portfolio-grid .archive__item-content {
+  .portfolio-grid .archive__item-title,
+  .portfolio-grid .page__meta,
+  .portfolio-grid .page__date,
+  .portfolio-grid .archive__item-excerpt {
+    grid-column: 1;
     padding: 1rem;
+  }
+
+  .portfolio-grid .archive__item-title {
+    padding-top: 1rem;
+  }
+
+  .portfolio-grid .archive__item-excerpt {
+    padding-bottom: 1rem;
   }
 }
