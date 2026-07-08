@@ -1,40 +1,36 @@
 ---
 title: "Mapping Socio-Ecological Change in the Red Corridor using GIS"
-excerpt: ""
+excerpt: "The 'Red Corridor' in India is considered a media blackout zone, with there being very little media reporting from the area. We attempt to use remote sensing techniques to paint a picture of the constant confict that is happening in these regions."
 header:
-    teaser: caste_bias_out.png
+    teaser: gis_out.png
 collection: portfolio
 ---
 
-Collaborators: Anka Reuel, Max Lamparth.
+Collaborators: Diana Moanga
 
-Course project done as part of CS134: Introduction to AI Governance, Winter 2024-25 quarter. 
-
+Course project done as part of EARTHSYS144: Introduction to GIS, Winter 2025-26 quarter. 
 
 ## Motivation
-As AI systems become increasingly prevalent in India and are integrated into decision-making across critical domains such as governance, healthcare, and education, it is essential to examine the structural discrimination they may perpetuate. While substantial research has investigated biases in large language models (LLMs) based on race, gender, and other protected characteristics, relatively little work has focused on auditing these models for caste bias. This gap is particularly significant in the Indian context, where caste continues to shape social, economic, and institutional outcomes. Understanding whether LLMs reproduce or amplify caste-based biases is therefore an important step toward ensuring that AI systems are fair and equitable.
+Central India consists mainly of forests and mountains, and is rich in natural resource deposits, specifically coal mines, iron ore, and aluminium ore (Bauxite). Over the years after Indian independence, large swathes of these lands have been handed over to foreign MNCs, which have resulted in the indigenous people being forcefully displaced, and also caused great ecological damage. The constant repression of the people by the state machinery have also resulted in there being maoist activity in these areas, and hence, these regions are very conflict-prone. There is very little media coverage of these areas. 
+
+Drawing inspiration from how GIS has been used to quantify and study conflict in Palestine and Sudan, is it possible for us to use openly available satellite footage to study socio-ecological changes in the region? 
 
 ## Methodology
-We use the Word Embedding Association Test (WEAT) to measure bias by comparing the cosine similarity between two groups of entities (G₁, G₂) and two sets of attributes (A₁: positive, A₂: contrastive) to assess association differences. This is defined as:
-$$  
-S(G_1, G_2, A_1, A_2) = \frac{1}{|G_1|} \sum_{g_1 \in G_1} S(g_1, A_1, A_2) - \frac{1}{|G_2|} \sum_{g_2 \in G_2} S(g_2, A_1, A_2)
-$$
+We identify Areas of Interest (AoIs) by leveraging prior literature on mining-related conflict in India, which suggests that regions surrounding mineral extraction sites are likely hotspots of conflict. Using district-level Maoist conflict data from the South Asia Terrorism Portal (SATP), we first identify regions with historical conflict activity. We then overlay open-source geospatial datasets of iron ore, bauxite, and coal mine locations to examine the spatial relationship between mining activity and conflict. Buffer regions around these mines are subsequently defined as AoIs for remote sensing analysis, enabling comparison between conflict-affected and non-conflict mining regions.
 
-where we define $$S(w, A_1, A_2)$$ as:
+![Conflict Map](/images/conflict_map.png)
+*Figure 1: Map showing conflict areas, created using data from SATP*
 
-$$
-S(w, A_1, A_2) = \frac{1}{|A_1|} \sum_{a_1 \in A_1} \cos(w, a_1) - \frac{1}{|A_2|} \sum_{a_2 \in A_2} \cos(w, a_2)
-$$
 
-The high-level idea here is that given a set of positive and negative adjectives, and terms associated with being either "upper" caste or "lower" caste, we can evaluate the WEAT score which measures the tendency for the models to associate a set of adjectives more with a certain group. We would like these scores to be close to 0, with large values indicating statistically significant biases in either direction. This is what our results look like:
+Within these AoIs, we analyze temporal changes in ecological and human activity using multi-year satellite datasets. Land degradation and ecological impacts are studied using Landsat-8 Level-2 imagery, while changes in human presence and potential displacement are examined using VIIRS nighttime light data. To efficiently process large-scale raster time series, including automated cloud filtering, image selection, and spatial clipping, we utilize Google Earth Engine (GEE), which provides scalable access to and processing of satellite imagery. This is what our outputs look like:
 
-![Caste Bias Scores](/images/caste_bias_out.png)
+![Iron Ore locations in India](/images/iron_ore_out.png)
 
-*Figure 1: WEAT scores for various LLMs across regional languages*
+*Figure 2: On the left map, we see that iron ores with higher BSI (lower vegetation, which implies larger ecological damage), generally occur in areas under maoist control instead of state control. Further, on the right map, we see that there is a significant night-light divergence in conflict zones, hinting at the people being displaced. 
 
-We observe that there are pretty high-values for the WEAT scores, indicating that the models have the tendency to show strong bias on the caste axis. A more detailed look at the methodology and code can be found below. 
+While the results themselves are not too strong, I believe this is largely because we are using open-source satellite data which is not very high resolution. Even with that, we have obtained some interesting findings, and I believe that the methodology and the approach to this problem can be helpful to look into. I will soon make the data and code available here. For more details, check the presentation linked below.  
+
 
 ## Links
 
-- [📄 Full Paper](https://drive.google.com/file/d1P32SYwbMby3-XafMfbEg5_n2tcfN78vC/view)
-- [💻 Github Link](https://github.com/Dhananjay42/caste_bias_in_AI)
+- [📄 Presentation](https://docs.google.com/presentation/d/1UzwFNz3OMacKvmZxMFdABk-0DUFa-YKQ25e-5pgXzsg/edit?usp=sharing)

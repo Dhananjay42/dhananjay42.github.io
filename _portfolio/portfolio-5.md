@@ -1,5 +1,5 @@
 ---
-title: "Evaluating Structural Discrimination in Indian AI Systems"
+title: "Auditing AI models for Caste Bias"
 excerpt: "In this project, we put forward a methodology through which we can study caste bias in state-of-the-art multilingual LLMs, examining how models associate caste-indicative names with positive and negative attributes across multiple Indian languages."
 header:
     teaser: caste_bias_out.png
