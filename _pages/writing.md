@@ -7,7 +7,7 @@ author_profile: true
 
 {% include base_path %}
 
-I share longer-form writing here, including Substack essays and published pieces in the Stanford Daily.
+Here are a few things that I've written:
 
 <div class="portfolio-grid">
   {% for item in site.data.writing %}

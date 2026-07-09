@@ -106,7 +106,10 @@
         <li><a href="https://foursquare.com/{{ author.foursquare }}"><i class="fab fa-fw fa-foursquare icon-pad-right" aria-hidden="true"></i>Foursquare</a></li>
       {% endif %}
       {% if author.goodreads %}
-        <li><a href="https://www.goodreads.com/{{ author.goodreads }}"><i class="fab fa-fw fa-goodreads icon-pad-right" aria-hidden="true"></i>Goodreads</a></li>
+        <li><a href="{% if author.goodreads contains '://' %}{{ author.goodreads }}{% else %}https://www.goodreads.com/{{ author.goodreads }}{% endif %}"><i class="fab fa-fw fa-goodreads icon-pad-right" aria-hidden="true"></i>Goodreads</a></li>
+      {% endif %}
+      {% if author.letterboxd %}
+        <li><a href="{% if author.letterboxd contains '://' %}{{ author.letterboxd }}{% else %}https://letterboxd.com/{{ author.letterboxd }}{% endif %}"><i class="fab fa-fw fa-letterboxd icon-pad-right" aria-hidden="true"></i>Letterboxd</a></li>
       {% endif %}            
       {% if author.google_plus %}
         <li><a href="https://plus.google.com/+{{ author.google_plus }}"><i class="fab fa-fw fa-google-plus-g icon-pad-right" aria-hidden="true"></i>Google+</a></li>
@@ -129,6 +132,9 @@
       {% if author.medium %}
         <li><a href="{{ author.medium }}"><i class="fab fa-fw fa-medium icon-pad-right" aria-hidden="true"></i>Medium</a></li>
       {% endif %}      
+      {% if author.letterboxd %}
+        <li><a href="https://letterboxd.com/{{ author.letterboxd }}"><i class="fab fa-fw fa-letterboxd icon-pad-right" aria-hidden="true"></i>Letterboxd</a></li>
+      {% endif %}
       {% if author.pinterest %}
         <li><a href="https://www.pinterest.com/{{ author.pinterest }}"><i class="fab fa-fw fa-pinterest icon-pad-right" aria-hidden="true"></i>Pinterest</a></li>
       {% endif %}            
