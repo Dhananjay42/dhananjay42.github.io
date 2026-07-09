@@ -1,0 +1,17 @@
+- title: "Substack Article Title 1"
+  outlet: "Substack"
+  date: "2026-01-01"
+  description: "Short summary of the piece and why it matters."
+  url: "https://your-substack-link-1"
+
+- title: "Stanford Daily Article"
+  outlet: "The Stanford Daily"
+  date: "2026-01-01"
+  description: "Short summary of the article and the angle you took."
+  url: "https://your-stanford-daily-link"
+
+- title: "Substack Article Title 2"
+  outlet: "Substack"
+  date: "2026-01-01"
+  description: "Short summary of the piece and why it matters."
+  url: "https://your-substack-link-2"

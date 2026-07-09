@@ -14,8 +14,8 @@ main:
   - title: "CV"
     url: /cv/    
 
-  - title: "Miscellaneous"
-    url: /misc/
+  - title: "Writing"
+    url: /writing/
 
   # - title: "CV"
   #   url: /cv-json/

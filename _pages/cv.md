@@ -9,6 +9,6 @@ redirect_from:
 
 {% include base_path %}
 
-I keep my CV in PDF form.
+Here's my CV (as of 8th July, 2026):
 
 [Download CV as PDF]({{ base_path }}/files/cv.pdf){: .btn .btn--primary}
