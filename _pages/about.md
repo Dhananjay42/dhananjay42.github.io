@@ -19,7 +19,7 @@ I am Dhananjay, a data scientist interested in how statistics, machine learning,
 - I care about data, society, and the politics of technology.
 - My recent work has focused on topics including Causal Inference, Inequality Quantification, AI Bias, Non-Eurocentric NLP, and Data-Driven Policy
 - I am especially interested in questions at the intersection of data science, governance, decolonial tech, and social justice.
-- Long term, I want to use technical tools in ways that materially improve people's lives, whether it be in the US, or in India and other parts of the Global South.
+- Long term, I want to use technical tools in ways that materially improve people's lives, whether it be in the US, or in India, or other countries in the "Global South".
 
 <details class="about-longform">
   <summary><strong>Read the full version</strong></summary>
@@ -32,7 +32,7 @@ I am Dhananjay, a data scientist interested in how statistics, machine learning,
 
   <p>Doing projects involving low-resource language transcription models, and measuring african-specific bias in AI models got me thinking about "decolonial tech", specifically giving me a critical framework for thinking about technological solutions for the people of the global south. Further, spending a summer in Africa was extremely enjoyable, rooting in me a desire to work on problems specific to "developing" countries such as Senegal and India.</p>
 
-  <p>By now, I had also started to tire of the hype around AI, and while I saw it as an incredibly useful tool, I also did not (and do not) believe that it will solve all of humanity's problems. I also did a great causal inference course, which introduced me to new ways of thinking about data, and I did another deeply personal project about measuring caste-based health disparity in India. Along the way, I also picked up skills including GIS, R, and SQL, all of which are useful for a data scientist to have.</p>
+  <p>By now, I had also started to tire of the hype around AI, and while I saw it as an incredibly useful tool, I also did not (and do not) believe that it will solve all of humanity's problems. I did a great causal inference course, which introduced me to new ways of thinking about data, and I did another deeply personal project about measuring caste-based health disparity in India. Along the way, I also picked up skills including GIS, R, and SQL, all of which are useful for a data scientist to have.</p>
 
   <p>Through my journey, I have come to the conclusion that I would love to use my skills in the service of people, and for the betterment of their condition. Towards the end of my degree, I also got a great opportunity of doing an internship with The Innovation Lab at the Government Accountability Office (GAO), where I got to witness first-hand how new technology could radically transform the functioning of governance.</p>
 
