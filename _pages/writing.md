@@ -25,3 +25,12 @@ Here are a few things that I've written:
     </div>
   {% endfor %}
 </div>
+
+I also ramble about movies on letterboxd, although it is a lot more informal, and potentially full of grammatical/spelling mistakes. Feel free to check it out:
+
+{% if site.author.letterboxd %}
+<p>
+  <a href="{% if site.author.letterboxd contains '://' %}{{ site.author.letterboxd }}{% else %}https://letterboxd.com/{{ site.author.letterboxd }}{% endif %}" class="btn btn--primary" target="_blank" rel="noopener noreferrer">Follow on Letterboxd</a>
+</p>
+{% endif %}
+
