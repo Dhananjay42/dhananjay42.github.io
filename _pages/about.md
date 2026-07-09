@@ -9,16 +9,19 @@ redirect_from:
 
 Hello!
 
-“I am Dhananjay, a data scientist interested in how statistics, machine learning, and computational tools can be used to study and challenge inequality. I recently completed a Master’s in Computational & Mathematical Engineering at Stanford, after studying Mechanical Engineering and Data Science at IIT Madras. My work has included performing healthcare access studies with the World Bank, developing indigenous AI solutions in Senegal, and using LLMs to improve governance-related tasks at the U.S. GAO.”
+I realize that many people don't want to read a lot of rambling on the main page, so here's a TL;DR version for quickly skimming, followed by a full version for anyone actually interested in reading through. 
 
-## TL;DR
+
+## TL;DR Intro
+
+I am Dhananjay, a data scientist interested in how statistics, machine learning, and computational tools can be used to study and challenge inequality. I recently completed a Master’s in Computational & Mathematical Engineering at Stanford, after studying Mechanical Engineering and Data Science at IIT Madras. My work has included performing healthcare access studies with the World Bank, developing indigenous AI solutions in Senegal, and using LLMs to improve governance-related tasks at the U.S. GAO.
 
 - I care about data, society, and the politics of technology.
 - My recent work has focused on topics including Causal Inference, Inequality Quantification, AI Bias, Non-Eurocentric NLP, and Data-Driven Policy
 - I am especially interested in questions at the intersection of data science, governance, decolonial tech, and social justice.
 - Long term, I want to use technical tools in ways that materially improve people's lives, whether it be in the US, or in India and other parts of the Global South.
 
-<details>
+<details class="about-longform">
   <summary><strong>Read the full version</strong></summary>
 
   <p>I am Dhananjay. I am deeply interested in data science and statistics, but specifically in how they can be used to study and combat societal inequality. In general, I am interested in thinking about Tech (and STEM, broadly), from a society-centric lens.</p>
@@ -33,7 +36,7 @@ Hello!
 
   <p>Through my journey, I have come to the conclusion that I would love to use my skills in the service of people, and for the betterment of their condition. Towards the end of my degree, I also got a great opportunity of doing an internship with The Innovation Lab at the Government Accountability Office (GAO), where I got to witness first-hand how new technology could radically transform the functioning of governance.</p>
 
-  <p>I am always looking for opportunities to learn and apply my knowledge in meaningful ways. If any of this resonated with you, feel free to reach out to me and say hi! I am currently on the lookout for opportunities, so do feel free to share anything that might be relevant too.</p>
+  <p>I am always looking for opportunities to learn and apply my knowledge in meaningful ways. If any of this resonated with you, feel free to reach out to me and say hi!</p>
 
 </details>
 
