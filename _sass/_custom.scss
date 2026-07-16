@@ -159,6 +159,10 @@ html[data-theme="dark"] .portfolio-grid .page__date {
   .portfolio-grid .archive__item-excerpt {
     padding: 1.25rem;
   }
+
+  .portfolio-grid .archive__item-excerpt {
+    display: block;
+  }
 }
 
 /* About page longform block */
