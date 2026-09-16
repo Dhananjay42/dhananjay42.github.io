@@ -16,8 +16,14 @@ While there are many reasons to believe that there are large structural disparit
 
 Upon doing some research, we came across the National Family Health Survey (NFHS) data, which measures various healthcare indicators for a sample of the population, which also contains caste information of the respondents. Of particular interest to us is data from NFHS-5 (2019-21) and NFHS-4 (2014-15), both of which are fairly recent. 
 
-![Disparity Visualization](/images/nfhs_vis.png)
+![Visualizing the gap of Phase-1 and Phase-2 Districts](/images/nfhs_vis.png)
 *Figure 1: Distribution of child nutrition outcomes across caste groups*
+
+![Disparity Gap - Stunting](/images/disparity_map_1.png)
+*Figure 2: Map demonstrating population percentage gaps for stunting*
+
+![Disparity Gap - Underweight](/images/disparity_map_2.png)
+*Figure 3: Map demonstrating population percentage gaps for underweight*
 
 
 Since we needed our problem to be modelled using a causal inference framework, we exploited another characteristic of the NFHS-5 data. It was conducted in 2 phases, pre-COVID, and post-COVID. Hence, if we were to think of the disparity between certain health metrics between Forward Castes (FC) and Backward Castes (BC) as the "outcome" and COVID as a "treatment", we have a natural way of modelling the causal effect of COVID on worsening existing disparities. For this particular project, we used the disparity in child malnutrition outcomes as the outcome, and performed our analysis at a district-level granularity. Here, the NFHS-4 data is used as historical data, to justify a parallel trends assumption, which directly ties into how the Difference-in-Difference-in-Differences (DDD) approach works. 
